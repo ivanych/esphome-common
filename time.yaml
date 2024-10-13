@@ -1,0 +1,18 @@
+# Время и часовой пояс
+
+time:
+  - platform: homeassistant
+    id: time_homeassistant
+    timezone: ${timezone}
+
+text_sensor:
+
+  # Часовой пояс
+  - platform: template
+    name: "Timezone"
+    id: txtsensor_timezone
+    icon: mdi:map-clock-outline
+    entity_category: diagnostic
+    update_interval: 1d
+    lambda: |-
+      return {id(time_homeassistant).now().strftime("%z (%Z)")};
