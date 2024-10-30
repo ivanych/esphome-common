@@ -1,9 +1,9 @@
 esphome:
-  name: ${device_name}-${device_board}-${device_number}
+  name: ${unit_name}-${board_name}-${device_number}
   friendly_name: "${friendly_name} #${device_number}"
   comment: ${comment}
   project:
-    name: ${project_author}.${device_name}-${device_board}-${device_number}
+    name: ${project_author}.${unit_name}-${board_name}-${device_number}
     version: ${project_version}
 
 wifi:
