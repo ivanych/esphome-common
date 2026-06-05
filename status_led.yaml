@@ -5,8 +5,11 @@
 # Требует управляемые объекты:
 #   - Светодиод (output_led)
 
+substitutions:
+  number: 1
+
 light:
   - platform: status_led
     id: light_status_led
     internal: true
-    output: output_led
+    output: output_led_${number}
