@@ -1,0 +1,38 @@
+# Функция установки флага "Выполнена загрузка?"
+#
+# Управляемые объекты:
+#   - Флаг выполненной загрузки (globals_is_boot)
+# Неуправляемые объекты:
+#   - Индикатор выполненной загрузки
+# Требует управляемые объекты:
+#   - нет
+
+globals:
+  # Выполнена загрузка?
+  - id: globals_is_boot
+    type: bool
+    initial_value: 'false'
+
+esphome:
+  on_boot:
+    - priority: 700
+      then:
+        - logger.log:
+            format: "priority: 700"
+            tag: "on_boot"
+
+        # Устанавливаем флаг "Выполнена загрузка?"
+        - globals.set:
+            id: globals_is_boot
+            value: 'true'
+        - logger.log:
+            format: "  📦 globals.set: globals_is_boot = true"
+            tag: "on_boot"
+
+binary_sensor:
+  # Индикатор выполненной загрузки
+  - platform: template
+    name: "Is Boot?"
+    icon: mdi:upload
+    entity_category: diagnostic
+    lambda: 'return id(globals_is_boot);'
