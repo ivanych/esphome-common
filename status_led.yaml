@@ -1,0 +1,12 @@
+# Статусный светодиод, совмещённый со светодиодом
+#
+# Управляемые объекты:
+#   - нет
+# Требует управляемые объекты:
+#   - Светодиод (output_led)
+
+light:
+  - platform: status_led
+    id: light_status_led
+    internal: true
+    output: output_led
